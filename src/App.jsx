@@ -44,7 +44,7 @@ const App = () => {
               <Route exact path={"/news"} element={<News />} />
               <Route
                 exact
-                path={"/button/CreatePost"}
+                path={"/forum/createpost"}
                 element={<CreatePost />}
               />
             </Routes>

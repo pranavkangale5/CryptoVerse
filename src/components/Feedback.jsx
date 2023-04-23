@@ -1,83 +1,82 @@
-import React, { useState } from "react";
-import { Form, Input, Button, message } from "antd";
-import { SmileOutlined } from "@ant-design/icons";
-import "./Feedback.css";
-import FeedbackImage from "../EthTransLogo.png";
+import { Box, Text, Button, Input } from "@chakra-ui/react";
 
+import React from "react";
 const Feedback = () => {
-  const [submitted, setSubmitted] = useState(false);
-
-  const onFinish = (values) => {
-    console.log(values);
-    message.success("Thanks for your feedback!");
-    setSubmitted(true);
-  };
-
   return (
-    <div className="feedback-container">
-      {!submitted ? (
-        <Form className="feedback-form" onFinish={onFinish}>
-          <Form.Item
-            label="Name"
-            name="name"
-            rules={[
-              {
-                required: true,
-                message: "Please input your name!",
-              },
-            ]}
-          >
-            <Input className="feedback-input" />
-          </Form.Item>
+    <form
+      action="https://formspree.io/f/mknakqjj"
+      method="POST"
+      style={{
+        width: "100%",
+        height: "80vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <Box
+        w="40%"
+        p="2rem"
+        display={"flex"}
+        flexDir={"column"}
+        gap="20px"
+        boxShadow="0px 5px 20px rgba(0,0,0,0.3)"
+      >
+        <Text
+          color={"blackAlpha.700"}
+          textAlign={"center"}
+          fontSize={"20px"}
+          fontWeight={"600"}
+          mb="10px"
+        >
+          FeedBack Form
+        </Text>
+        <Input
+          type="text"
+          color={"blackAlpha.600"}
+          outline={0}
+          boxShadow="0px 5px 20px rgba(0,0,0,0.009)"
+          _focus={{
+            boxShadow: "0px 5px 20px rgba(0,0,0,0.11)",
+            border: "none",
+          }}
+          placeholder="Enter your name "
+        />
+        <Input
+          type="email"
+          name="email"
+          color={"blackAlpha.600"}
+          outline={0}
+          boxShadow="0px 5px 20px rgba(0,0,0,0.009)"
+          _focus={{
+            boxShadow: "0px 5px 20px rgba(0,0,0,0.11)",
+            border: "none",
+          }}
+          placeholder="Enter your Email "
+        />
+        <Input
+          type="textarea"
+          name="message"
+          color={"blackAlpha.600"}
+          outline={0}
+          boxShadow="0px 5px 20px rgba(0,0,0,0.009)"
+          _focus={{
+            boxShadow: "0px 5px 20px rgba(0,0,0,0.11)",
+            border: "none",
+          }}
+          placeholder="Enter your Feedback "
+        />
 
-          <Form.Item
-            label="Email"
-            name="email"
-            rules={[
-              {
-                required: true,
-                message: "Please input your email!",
-              },
-            ]}
-          >
-            <Input className="feedback-input" type="email" />
-          </Form.Item>
-
-          <Form.Item
-            label="Feedback"
-            name="feedback"
-            rules={[
-              {
-                required: true,
-                message: "Please enter your feedback!",
-              },
-            ]}
-          >
-            <Input.TextArea className="feedback-input" rows={4} />
-          </Form.Item>
-
-          <Form.Item>
-            <Button className="feedback-submit" htmlType="submit">
-              Submit Feedback
-            </Button>
-          </Form.Item>
-        </Form>
-      ) : (
-        <div className="feedback-thanks-container">
-          <div className="feedback-image-container">
-            <img
-              src={FeedbackImage}
-              alt="Feedback"
-              className="feedback-image"
-            />
-            <div className="feedback-image-overlay"></div>
-          </div>
-          <div className="feedback-thanks-message">
-            <SmileOutlined /> Thank You for your feedback!
-          </div>
-        </div>
-      )}
-    </div>
+        <Button
+          variant="ghost"
+          type="submit"
+          color="blackAlpha.600"
+          colorScheme="black"
+        >
+          Send
+        </Button>
+      </Box>
+    </form>
   );
 };
 
